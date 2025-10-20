@@ -13,7 +13,7 @@ Docker – Containerization for consistent app deployment
 
 
 ⚙️ How It Works
-**1. Create a ubuntu EC2 instance**
+**1. Create a ubuntu EC2 instance:**
  - provide name to your instance (cicd_demo)
  - select AMI ubuntu (operating system)
  - select key pair
@@ -28,11 +28,13 @@ Docker – Containerization for consistent app deployment
 
 <img width="1222" height="777" alt="image" src="https://github.com/user-attachments/assets/70794c91-9f57-40e5-91b9-c31f9cb17476" />
 
-<img width="1567" height="290" alt="image" src="https://github.com/user-attachments/assets/8171d991-fc68-4ea8-969e-01ed1ce16747" />
-
 <img width="1894" height="738" alt="image" src="https://github.com/user-attachments/assets/a739a447-2c14-4a13-ae70-9a93021b8478" />
 
-**2. Install jenkind and Docker in EC2**
+<img width="1567" height="290" alt="image" src="https://github.com/user-attachments/assets/8171d991-fc68-4ea8-969e-01ed1ce16747" />
+
+
+
+**2. Install jenkind and Docker in EC2:**
  - SSH into your instance
  - Install java
  - Install jenkins
@@ -52,64 +54,78 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 ```
-   
+ - install Docker
+   ```
+    sudo apt-get install docker.io
+    sudo usermod -aG $USER && jenkins
+    newgrp decker
+    docker ps
+   ```
 
-GitHub Actions automatically triggers the workflow (.github/workflows/ci-cd.yml).
+ <img width="803" height="144" alt="image" src="https://github.com/user-attachments/assets/febad508-434b-4dd4-8747-072e460cdbee" />
 
-It installs dependencies using npm install.
+<img width="1287" height="403" alt="image" src="https://github.com/user-attachments/assets/b194767f-e02d-466f-a372-e67c75a675c1" />
 
-Runs test scripts (if defined).
+<img width="1227" height="723" alt="image" src="https://github.com/user-attachments/assets/e12feb00-3613-43b4-a1c8-c7433ccf5637" />
 
-Builds a Docker image for the application.
+<img width="747" height="370" alt="image" src="https://github.com/user-attachments/assets/b6161fcd-eb53-4785-a486-abafcf36c70a" />
 
-🚀 2. Continuous Deployment (CD)
 
-After a successful build:
+**3. Create a job in jenkins:**
+ - Create a job
+ - provide it a name (demo_CICD)
+ - check git project and provide the url
+ - check GitHub hook trigger for GITScm polling (automatically triggers chage in git repo)
+ - code the pipeline
+```
+pipeline{
+    agent any
+    stages{
+        stage("code"){
+            steps{
+              git url:"https://github.com/AnannyaDeshpand-054/nodejs-demo-app1",branch:"master" 
+              echo " code cloned successfully"
+            }
+        }
+        stage("build"){
+            steps{
+                sh "docker build -t demo-app:latest ."
+                echo "image build successfully"
+            }
+        }
+        stage("push"){
+            steps{
+                withCredentials([usernamePassword(
+                    credentialsId:"dockerhub-cred",
+                    usernameVariable:"dockerHubUser", 
+                    passwordVariable:"dockerHubPass")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker image tag demo-app:latest ${env.dockerHubUser}/demo-app:latest"
+                sh "docker push ${env.dockerHubUser}/demo-app:latest "
+                        
+                    }
+                echo "code pushed successfully"
+            }
+        }
+        stage("deploy"){
+            steps{
+                sh "docker compose up -d"
+                echo "application deployed successfully"
+            }
+        }
+    }
+    
+}
+```
+ - save and build the pipeline
 
-The Docker image is tagged and pushed to Docker Hub (or GitHub Container Registry).
+<img width="1341" height="721" alt="image" src="https://github.com/user-attachments/assets/0d7975c2-0f66-487e-9688-773a2a79295d" />
 
-The app can then be deployed to a server, container service, or cloud platform (e.g., AWS, Azure, or GCP).
+<img width="940" height="340" alt="image" src="https://github.com/user-attachments/assets/13e9e787-ab17-4863-85dc-3460c1795ce3" />
 
-🧩 Sample GitHub Actions Workflow
+<img width="1035" height="664" alt="image" src="https://github.com/user-attachments/assets/4a0536bf-bb1a-440e-af61-13a417590b5c" />
 
-Below is an example ci-cd.yml file used in this project:
 
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/node-web-app:latest .
-
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/node-web-app:latest
-
-🔐 Required GitHub Secrets
 
 To make the workflow secure, configure the following secrets in your repository:
 
