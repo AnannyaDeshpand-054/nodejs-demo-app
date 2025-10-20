@@ -22,15 +22,15 @@ Docker – Containerization for consistent app deployment
  - configure storage capacity (15GiB - 20 GiB)
  - launch instance
 
-<img width="1247" height="733" alt="image" src="https://github.com/user-attachments/assets/da33c423-18d2-4db6-8f3e-670e8ab532b6" />
+<img width="1247" height="733" alt="image" src="https://github.com/user-attachments/assets/da33c423-18d2-4db6-8f3e-670e8ab532b6"/>
 
-<img width="1242" height="659" alt="image" src="https://github.com/user-attachments/assets/1de84551-9aa1-4a4f-8abb-dc26dbcb7452" />
+<img width="1242" height="659" alt="image" src="https://github.com/user-attachments/assets/1de84551-9aa1-4a4f-8abb-dc26dbcb7452"/>
 
-<img width="1222" height="777" alt="image" src="https://github.com/user-attachments/assets/70794c91-9f57-40e5-91b9-c31f9cb17476" />
+<img width="1222" height="777" alt="image" src="https://github.com/user-attachments/assets/70794c91-9f57-40e5-91b9-c31f9cb17476"/>
 
-<img width="1894" height="738" alt="image" src="https://github.com/user-attachments/assets/a739a447-2c14-4a13-ae70-9a93021b8478" />
+<img width="1894" height="738" alt="image" src="https://github.com/user-attachments/assets/a739a447-2c14-4a13-ae70-9a93021b8478"/>
 
-<img width="1567" height="290" alt="image" src="https://github.com/user-attachments/assets/8171d991-fc68-4ea8-969e-01ed1ce16747" />
+<img width="1567" height="290" alt="image" src="https://github.com/user-attachments/assets/8171d991-fc68-4ea8-969e-01ed1ce16747"/>
 
 
 
