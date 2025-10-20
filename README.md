@@ -125,7 +125,12 @@ pipeline{
 
 <img width="1035" height="664" alt="image" src="https://github.com/user-attachments/assets/4a0536bf-bb1a-440e-af61-13a417590b5c" />
 
+**step code**
+This step will clone the code from give url and branch into the EC2 instance.
+<img width="1828" height="151" alt="image" src="https://github.com/user-attachments/assets/d2e06d6d-5814-41b2-b9a1-626b3d0bbb63" />
 
+**step build**
+This step will build a image using Dockerfile 
 
 To make the workflow secure, configure the following secrets in your repository:
 
@@ -189,34 +194,7 @@ Cloud & DevOps Enthusiast | AWS Certified Cloud Practitioner
 📧 Email: [Your Email]
 🌐 LinkedIn: [Your LinkedIn Profile]
 
-<img width="1247" height="733" alt="image" src="https://github.com/user-attachments/assets/da33c423-18d2-4db6-8f3e-670e8ab532b6" />
-<img width="1242" height="659" alt="image" src="https://github.com/user-attachments/assets/1de84551-9aa1-4a4f-8abb-dc26dbcb7452" />
-<img width="1222" height="777" alt="image" src="https://github.com/user-attachments/assets/70794c91-9f57-40e5-91b9-c31f9cb17476" />
-<img width="1567" height="290" alt="image" src="https://github.com/user-attachments/assets/8171d991-fc68-4ea8-969e-01ed1ce16747" />
-<img width="1894" height="738" alt="image" src="https://github.com/user-attachments/assets/a739a447-2c14-4a13-ae70-9a93021b8478" />
 
 
 
 
-
-<img width="803" height="144" alt="image" src="https://github.com/user-attachments/assets/febad508-434b-4dd4-8747-072e460cdbee" />
-
-<img width="1287" height="403" alt="image" src="https://github.com/user-attachments/assets/b194767f-e02d-466f-a372-e67c75a675c1" />
-
-<img width="1227" height="723" alt="image" src="https://github.com/user-attachments/assets/e12feb00-3613-43b4-a1c8-c7433ccf5637" />
-
-<img width="747" height="370" alt="image" src="https://github.com/user-attachments/assets/b6161fcd-eb53-4785-a486-abafcf36c70a" />
-
-
-<img width="1357" height="784" alt="image" src="https://github.com/user-attachments/assets/e34324d0-23ad-43d8-a4c1-17a552f42ca7" />
-<img width="941" height="385" alt="image" src="https://github.com/user-attachments/assets/e2d42226-3a3c-4052-b9ff-a4092eedb52f" />
-
-<img width="662" height="134" alt="image" src="https://github.com/user-attachments/assets/ddf4eb6e-f23b-4a71-a3a4-177125a90aa8" />
-
-
-
-<img width="1641" height="279" alt="image" src="https://github.com/user-attachments/assets/81c21896-2270-4fa2-b2b2-56d6bba8c103" />
-<img width="1110" height="818" alt="image" src="https://github.com/user-attachments/assets/ebcb49d4-9211-4898-aa32-5998650e8432" />
-
-
-<img width="1920" height="451" alt="image" src="https://github.com/user-attachments/assets/36697650-656f-4cb4-a3d9-787e6c98216f" />
