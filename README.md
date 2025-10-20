@@ -131,43 +131,56 @@ This step will clone the code from give url and branch into the EC2 instance.
 
 **step build**
 This step will build a image using Dockerfile 
+```
+# Node Base Image
+FROM node:12.2.0-alpine
 
-To make the workflow secure, configure the following secrets in your repository:
+#Working Directry
+WORKDIR /node
 
-Secret Name	Description
-DOCKER_USERNAME	Your Docker Hub username
-DOCKER_PASSWORD	Your Docker Hub access token/password
+#Copy the Code
+COPY . .
 
-Path:
-Go to your repo → Settings → Secrets and variables → Actions → New repository secret
+#Install the dependecies
+RUN npm install
+RUN npm run test
+EXPOSE 8000
 
-🧪 How to Run Locally
-# Clone the repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
+#Run the code
+CMD ["node","app.js"]
+```
+**step push**
+- This step creates crendiatials,logins and pushes the image to your docker Hub account
+- To make the workflow secure, configure the following secrets in your repository:
+    Secret Name	Description
+    DOCKER_USERNAME	Your Docker Hub username
+    DOCKER_PASSWORD	Your Docker Hub access token/password
+- Path: to your repo → Settings → Secrets and variables → Actions → New repository secret
+- 
+  <img width="1542" height="386" alt="image" src="https://github.com/user-attachments/assets/25067d8c-8037-4321-ac86-3ed8bc9975d8" />
+  
+  <img width="1640" height="254" alt="image" src="https://github.com/user-attachments/assets/d0f6dc63-8fb4-4468-851f-11dac5b5954d" />
 
-# Navigate into the project
-cd <your-repo-name>
+**step Deploy**
+  - This step will create containers using image that has been pushes in dockerHub (using docker compose command)
+      {docker command "docker run -d -p 8000:8000 demo-app:latest" can also be used }
+  - This step will finally deploy application in EC2 and will be visible at its public IP address.
 
-# Install dependencies
-npm install
+    <img width="1920" height="565" alt="image" src="https://github.com/user-attachments/assets/e5ad917c-dd47-4f8b-8f7f-4f44328e625d" />
 
-# Run the app
-npm start
+**BUILD AND RUN YOUR PIPELINE**
 
-
-Visit http://localhost:3000
+<img width="1037" height="794" alt="image" src="https://github.com/user-attachments/assets/88c5221a-2f11-42e9-8779-a4deccf79d57" />
+Visit http://http://16.16.253.119:8000/:8000
  to view your running app.
 
-📦 Docker Build (Manual)
+OUR PIPELINE WORKS PERFECT!
 
-If you want to test containerization manually:
 
-docker build -t node-web-app .
-docker run -p 3000:3000 node-web-app
 
 ✅ Expected Output
 
-After each successful push to main:
+After each successful push to master:(create a git webhook for your repo)
 
 GitHub Actions workflow executes automatically.
 
@@ -191,8 +204,8 @@ This README.md documentation
 
 Anannya Deshpande
 Cloud & DevOps Enthusiast | AWS Certified Cloud Practitioner
-📧 Email: [Your Email]
-🌐 LinkedIn: [Your LinkedIn Profile]
+📧 Email: anannyamd1809@gmail.com
+
 
 
 
