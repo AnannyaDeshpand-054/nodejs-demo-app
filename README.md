@@ -166,7 +166,7 @@ CMD ["node","app.js"]
 Visit http://http://16.16.253.119:8000/:8000
  to view your running app.
 
-OUR PIPELINE WORKS PERFECT!
+OUR PIPELINE WORKS PERFECTLY!
 
 
 
@@ -190,7 +190,7 @@ Functional Dockerfile
 
 GitHub Actions workflow (.yml)
 
-This README.md documentation
+
 
 👩‍💻 Author
 
